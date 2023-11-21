@@ -41,6 +41,6 @@ public class Cars {
 
     @Override
     public String toString() {
-        return "Car's owner is " + owner + ", the model is" + model + ", the number is " + number + "\n";
+        return "Car's owner is " + owner + ", the model is " + model + ", the number is " + number + "\n";
     }
 }
