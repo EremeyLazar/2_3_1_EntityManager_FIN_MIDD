@@ -12,11 +12,11 @@ import java.util.List;
 
 @Controller
 public class CarsController {
-        Service service = new ServiceImp();
+    Service service = new ServiceImp();
 
 
     @GetMapping(value = "/cars")
-    public String showCars (HttpServletRequest request, ModelMap model) {
+    public String showCars(HttpServletRequest request, ModelMap model) {
         int carsNum = Integer.parseInt(request.getParameter("carsNum"));
         model.addAttribute("carsnum", carsNum);
 
@@ -25,7 +25,7 @@ public class CarsController {
         }
 
         List<String> messages = new ArrayList<>();
-        messages.add("Please, see the list of " + carsNum + " cars." );
+        messages.add("Please, see the list of " + carsNum + " cars.");
         service.getCarsFromList(carsNum).stream().forEach(x -> messages.add(String.valueOf(x)));
         model.addAttribute("messages", messages);
 
