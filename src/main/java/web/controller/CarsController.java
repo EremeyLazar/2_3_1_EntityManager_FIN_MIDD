@@ -18,7 +18,6 @@ public class CarsController {
     @GetMapping(value = "/cars")
     public String showCars(HttpServletRequest request, ModelMap model) {
         int carsNum = Integer.parseInt(request.getParameter("carsNum"));
-        model.addAttribute("carsnum", carsNum);
 
         if (carsNum > 5) {
             carsNum = 5;
