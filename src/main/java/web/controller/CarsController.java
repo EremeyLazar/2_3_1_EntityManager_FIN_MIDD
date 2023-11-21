@@ -22,7 +22,7 @@ public class CarsController {
         }
 
         List<String> messages = new ArrayList<>();
-        messages.add("Please, see the list of " + carsNum + " cars.");
+        messages.add("Please, see the list of " + carsNum + "out of 5 cars.");
         service.getCarsFromList(carsNum).stream().forEach(x -> messages.add(String.valueOf(x)));
         model.addAttribute("messages", messages);
 
