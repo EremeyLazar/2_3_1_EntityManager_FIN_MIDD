@@ -6,12 +6,25 @@
     <title></title>
 </head>
 <body>
+
 <div>
     <th:block th:each="msg : ${messages}">
         <h1 th:text="${msg}"></h1>
     </th:block>
+
 </div>
+<h2>Please, submit, how many cars should be declared</h2>
+<form action="cars" method="get">
+    <input type="int" name="carsNum"
+           placeholder="Cars to be submitted"/>
+    <input type="submit"/>
+
+</form>
+<br>
+
+
 <h2>HERE IS MY TEXT</h2>
 <h2>Second Line</h2>
+
 </body>
 </html>
