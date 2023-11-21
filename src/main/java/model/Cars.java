@@ -38,4 +38,9 @@ public class Cars {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return "Car's owner is " + owner + ", the model is" + model + ", the number is " + number + "\n";
+    }
 }
