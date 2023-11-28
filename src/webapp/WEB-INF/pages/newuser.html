@@ -7,42 +7,18 @@
   <title>NEW USER</title>
 </head>
 
-<!--CREATE NEW USER VERSION 1 !!! NOT WORKING!!!-->
+
 <body>
 <h2>Create new user here:</h2>
 
-<form:form form th:action="newuser" th:modelAttribute="newuser">
-  Name:
-  <th: form:input path="name"/>
-  <br/>
-  <br/>
-  Cell#
-  <form:input path="cell"/>
-  <br/>
-  <br/>
-  Sex:
-  <form:input path="sex"/>
-  <br/>
-  <br/>
-  Salary (USD):
-  <form:input path="salary"/>
-  <br/>
-  <br/>
-  Driver's licence:
-  <form:input path="dl"/>
-  <br/>
-  <br/>
-  <input type="submit" value="OK!">
-</form:form>
 
-  <!--CREATE NEW USER VERSION 2 !!! NOT WORKING!!!-->
-<!--</form:>-->
-<!--<form th:method="POST" th:action="@{newuser}" th:object="newuser">-->
-<!--  <label for="name">enter name</label>-->
-<!--  <input type="text" th:field="*{name}" id="name"/>-->
-<!--  <br/>-->
-<!--  <input type="submit" th:value="create">-->
-<!--</form>-->
+<!--CREATE NEW USER FORM>-->
+<form th:method="POST" th:action="@{/newuser}" th:object="${newone}">
+  <label for="name">Еnter name</label>
+  <input type="text" th:field="*{name}" id="name"/>
+  <br/>
+  <input type="submit" th:value="create">
+</form>
 
 
 

@@ -44,12 +44,12 @@ public class UsersController {
 
     @GetMapping(value = "/newuser")
     public String newUser (ModelMap model) {
-        model.addAttribute("newuser", new User());
+        model.addAttribute("newone", new User());
         return "newuser";
     }
 
     @PostMapping
-    public String createUser (@ModelAttribute("newuser") User user) {
+    public String createUser (@ModelAttribute("newone") User user) {
         userDao.save(user);
         return "redirect:/";
     }
