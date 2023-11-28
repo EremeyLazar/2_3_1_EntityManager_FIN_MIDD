@@ -6,7 +6,7 @@ public class User {
     private int id;
     private String name;
     private String cell;
-    private String sex;
+    private String country;
     private int salary;
     private String dl;
 
@@ -17,7 +17,7 @@ public class User {
         this.id = id;
         this.name = name;
         this.cell = cell;
-        this.sex = sex;
+        this.country = sex;
         this.salary = salary;
         this.dl = dl;
     }
@@ -48,11 +48,11 @@ public class User {
     }
 
     public String getSex() {
-        return sex;
+        return country;
     }
 
     public void setSex(String sex) {
-        this.sex = sex;
+        this.country = sex;
     }
 
     public int getSalary() {
@@ -76,7 +76,7 @@ public class User {
         return  "id " + id + " | " +
                 "name - " + name + " | " +
                 "cell: " + cell + " | " +
-                "sex - " + sex + " | " +
+                "country of residence - " + country + " | " +
                 "salary - " + salary + " | " +
                 "driver's licence number is " + dl;
     }

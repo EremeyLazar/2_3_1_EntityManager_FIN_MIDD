@@ -14,9 +14,21 @@
 
 <!--CREATE NEW USER FORM>-->
 <form th:method="POST" th:action="@{/newuser}" th:object="${newone}">
-  <label for="name">Еnter name</label>
+  <label for="name"> Еnter name</label>
   <input type="text" th:field="*{name}" id="name"/>
-  <br/>
+  <br/><br/>
+  <label for="cell"> Еnter cell#</label>
+  <input type="text" th:field="*{cell}" id="cell"/>
+  <br/><br/>
+  <label for="country"> Еnter country</label>
+  <input type="text" th:field="*{sex}" id="country"/>
+  <br/><br/>
+  <label for="salary">Selary (USD)</label>
+  <input type="number" th:field="*{salary}" id="salary"/>
+  <br/><br/>
+  <label for="dl">Driver's licence#)</label>
+  <input type="text" th:field="*{dl}" id="dl"/>
+  <br/><br/>
   <input type="submit" th:value="create">
 </form>
 
