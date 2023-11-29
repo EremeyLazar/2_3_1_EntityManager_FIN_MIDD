@@ -36,8 +36,8 @@ public class UserDao {
         userList.remove(user);
     }
 
-    public void update (User userUpdated) {
-        int id = userUpdated.getId();
+    public void update (int id, User userUpdated) {
+//        int id = userUpdated.getId();
         User toBeUpdated = getSingleUser(id);
         toBeUpdated.setName(userUpdated.getName());
         toBeUpdated.setCell(userUpdated.getCell());

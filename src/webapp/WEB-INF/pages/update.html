@@ -24,24 +24,23 @@
 <hr>
 <br/><br/>
 <form th:method="PATCH" th:action="@{/update}" th:object="${upuser}">
-  <label for="id"> NOT MODIFIRED</label>
-  <input type="number" th:field="*{id}" id="id"/>
-  <br/><br/>
-  <label for="name"> Еnter name</label>
+  <label for="name">Еnter name</label>
   <input type="text" th:field="*{name}" id="name"/>
   <br/><br/>
-  <label for="cell"> Еnter cell#</label>
+  <label for="cell">Enter cell#</label>
   <input type="text" th:field="*{cell}" id="cell"/>
   <br/><br/>
-  <label for="country"> Еnter country</label>
+  <label for="country">Enter country</label>
   <input type="text" th:field="*{country}" id="country"/>
   <br/><br/>
-  <label for="salary">Selary (USD)</label>
+  <label for="salary">Salary (USD)</label>
   <input type="number" th:field="*{salary}" id="salary"/>
   <br/><br/>
   <label for="dl">Driver's licence#)</label>
   <input type="text" th:field="*{dl}" id="dl"/>
   <br/><br/>
+  <hr>
+  <br/>
   <input type="submit" th:value="Update">
 </form>
 
