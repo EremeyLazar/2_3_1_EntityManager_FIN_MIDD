@@ -1,16 +1,34 @@
 package model;
 
-import org.springframework.stereotype.Component;
 
+//Нет компонента и связки. С компонентом все ломается.
+//Валидатор не работает.
+
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class User {
 
 
     private int id;
+
+    @NotEmpty(message = "name should be visible")
+    @Size (min=2, max = 12, message = "name should be valid")
     private String name;
+
+    @Min(value = 0, message = "cell# should be real")
+    @NotEmpty(message = "name should be visible")
     private String cell;
+
+    @NotEmpty(message = "Country should be visible")
     private String country;
+
+    @Min(value = 10, message = "no volunteers allowed here")
     private int salary;
+
+    @NotEmpty(message = "Country should be visible")
     private String dl;
 
     public User() {

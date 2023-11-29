@@ -1,5 +1,7 @@
 package web.controller;
 
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
 import userDao.UserDao;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +54,8 @@ public class UsersController {
     }
 
     @PostMapping(value = "/newuser")
-    public String createUser (@ModelAttribute("newone") User user) {
+    public String createUser (@ModelAttribute("newone") @Valid User user, BindingResult br) {
+        if (br.hasErrors()) {return "/newuser";}
         userDao.save(user);
         return "redirect:/";
     }
@@ -83,7 +86,8 @@ public class UsersController {
     }
 
     @PatchMapping(value = "/update")
-    public String update (@ModelAttribute("upuser") User user) {
+    public String update (@ModelAttribute("upuser") @Valid User user, BindingResult br) {
+        if (br.hasErrors()) {return "/update";}
         userDao.update(tempId, user);
         return "redirect:/";
     }
