@@ -1,13 +1,10 @@
 package model;
-
-
-//Нет компонента и связки. С компонентом все ломается.
-//Валидатор не работает.
-
-
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+
+//Нет компонента и связки. С компонентом все ломается.
+//Валидатор не работает.
 
 public class User {
 
