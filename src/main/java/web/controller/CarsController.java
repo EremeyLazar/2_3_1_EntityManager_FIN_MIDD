@@ -1,6 +1,6 @@
 package web.controller;
 
-import UserDAOImp.UserDao;
+import userDao.UserDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;

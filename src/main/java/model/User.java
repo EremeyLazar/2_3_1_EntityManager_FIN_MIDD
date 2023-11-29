@@ -1,5 +1,8 @@
 package model;
 
+import org.springframework.stereotype.Component;
+
+
 public class User {
 
 
@@ -13,11 +16,11 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, String cell, String sex, int salary, String dl) {
+    public User(int id, String name, String cell, String country, int salary, String dl) {
         this.id = id;
         this.name = name;
         this.cell = cell;
-        this.country = sex;
+        this.country = country;
         this.salary = salary;
         this.dl = dl;
     }
@@ -47,12 +50,12 @@ public class User {
         this.cell = cell;
     }
 
-    public String getSex() {
+    public String getCountry() {
         return country;
     }
 
-    public void setSex(String sex) {
-        this.country = sex;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public int getSalary() {

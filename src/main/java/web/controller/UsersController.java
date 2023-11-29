@@ -1,8 +1,10 @@
 package web.controller;
 
-import UserDAOImp.UserDao;
+import userDao.UserDao;
 import model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +15,9 @@ import java.util.List;
 public class UsersController {
 
     UserDao userDao = new UserDao();
-    User user = new User();
+
+
+    private User user;
 
     int i = 0;
 
@@ -43,13 +47,12 @@ public class UsersController {
     }
 
     @GetMapping(value = "/newuser")
-    public String newUser (ModelMap model) {
-        User user = new User();
-        model.addAttribute("newone", user);
+    public String newUser (Model model) {
+        model.addAttribute("newone", new User());
         return "newuser";
     }
 
-    @PostMapping
+    @PostMapping(value = "/newuser")
     public String createUser (@ModelAttribute("newone") User user) {
         userDao.save(user);
         return "redirect:/";
