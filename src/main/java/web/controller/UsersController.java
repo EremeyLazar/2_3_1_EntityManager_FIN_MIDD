@@ -19,7 +19,6 @@ public class UsersController {
 
     private User user;
 
-    int i = 0;
 
 //    @Autowired
 //    private UserDao userDao;
@@ -78,10 +77,14 @@ public class UsersController {
 
     @GetMapping(value = "/update")
     public String updateUser (ModelMap model, @RequestParam("id") int id) {
-        user = userDao.getSingleUser(id);
-        model.addAttribute("upuser", user);
-
+        model.addAttribute("upuser", userDao.getSingleUser(id));
         return "update";
+    }
+
+    @PatchMapping(value = "/update")
+    public String update (@ModelAttribute("upuser") User user) {
+        userDao.update(user);
+        return "redirect:/";
     }
 
 }

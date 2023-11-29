@@ -36,6 +36,16 @@ public class UserDao {
         userList.remove(user);
     }
 
+    public void update (User userUpdated) {
+        int id = userUpdated.getId();
+        User toBeUpdated = getSingleUser(id);
+        toBeUpdated.setName(userUpdated.getName());
+        toBeUpdated.setCell(userUpdated.getCell());
+        toBeUpdated.setCountry(userUpdated.getCountry());
+        toBeUpdated.setDl(userUpdated.getDl());
+        toBeUpdated.setSalary(userUpdated.getSalary());
+    }
+
 
 
 

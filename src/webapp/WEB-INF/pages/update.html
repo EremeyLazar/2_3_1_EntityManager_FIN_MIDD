@@ -5,18 +5,28 @@
 <head>
   <meta charset="UTF-8">
   <title>UPDATE USER</title>
+
+  <style>
+    hr {
+      border: none;
+      background-color: red;
+      color: red;
+      height: 2px;
+    }
+  </style>
+
 </head>
 
 
 <body>
-<h2>Create new user here:</h2>
-
-
-
-
-
-<!--CREATE NEW USER FORM>-->
-<form th:method="POST" th:action="@{/newuser}" th:object="${upuser}">
+<hr>
+<h2>Update user's info:</h2>
+<hr>
+<br/><br/>
+<form th:method="PATCH" th:action="@{/update}" th:object="${upuser}">
+  <label for="id"> NOT MODIFIRED</label>
+  <input type="number" th:field="*{id}" id="id"/>
+  <br/><br/>
   <label for="name"> Еnter name</label>
   <input type="text" th:field="*{name}" id="name"/>
   <br/><br/>
@@ -32,8 +42,32 @@
   <label for="dl">Driver's licence#)</label>
   <input type="text" th:field="*{dl}" id="dl"/>
   <br/><br/>
-  <input type="submit" th:value="create">
+  <input type="submit" th:value="Update">
 </form>
+
+
+
+
+
+<!--CREATE NEW USER FORM>-->
+<!--<form th:method="POST" th:action="@{/newuser}" th:object="${upuser}">-->
+<!--  <label for="name"> Еnter name</label>-->
+<!--  <input type="text" th:field="*{name}" id="name"/>-->
+<!--  <br/><br/>-->
+<!--  <label for="cell"> Еnter cell#</label>-->
+<!--  <input type="text" th:field="*{cell}" id="cell"/>-->
+<!--  <br/><br/>-->
+<!--  <label for="country"> Еnter country</label>-->
+<!--  <input type="text" th:field="*{country}" id="country"/>-->
+<!--  <br/><br/>-->
+<!--  <label for="salary">Selary (USD)</label>-->
+<!--  <input type="number" th:field="*{salary}" id="salary"/>-->
+<!--  <br/><br/>-->
+<!--  <label for="dl">Driver's licence#)</label>-->
+<!--  <input type="text" th:field="*{dl}" id="dl"/>-->
+<!--  <br/><br/>-->
+<!--  <input type="submit" th:value="create">-->
+<!--</form>-->
 
 
 
