@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:form="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UPDATE USER</title>
+</head>
+
+
+<body>
+<h2>Create new user here:</h2>
+
+
+
+
+
+<!--CREATE NEW USER FORM>-->
+<form th:method="POST" th:action="@{/newuser}" th:object="${upuser}">
+  <label for="name"> Еnter name</label>
+  <input type="text" th:field="*{name}" id="name"/>
+  <br/><br/>
+  <label for="cell"> Еnter cell#</label>
+  <input type="text" th:field="*{cell}" id="cell"/>
+  <br/><br/>
+  <label for="country"> Еnter country</label>
+  <input type="text" th:field="*{country}" id="country"/>
+  <br/><br/>
+  <label for="salary">Selary (USD)</label>
+  <input type="number" th:field="*{salary}" id="salary"/>
+  <br/><br/>
+  <label for="dl">Driver's licence#)</label>
+  <input type="text" th:field="*{dl}" id="dl"/>
+  <br/><br/>
+  <input type="submit" th:value="create">
+</form>
+
+
+
+</body>
+</html>

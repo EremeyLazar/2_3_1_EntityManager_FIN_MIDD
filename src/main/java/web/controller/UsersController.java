@@ -76,12 +76,12 @@ public class UsersController {
         return "deleted";
     }
 
-    @GetMapping(value = "/updateuser")
-    public String updateUser (@RequestParam("id") int id, ModelMap model) {
+    @GetMapping(value = "/update")
+    public String updateUser (ModelMap model, @RequestParam("id") int id) {
         user = userDao.getSingleUser(id);
+        model.addAttribute("upuser", user);
 
-
-        return null;
+        return "update";
     }
 
 }
