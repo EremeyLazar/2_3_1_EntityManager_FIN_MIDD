@@ -1,4 +1,6 @@
 package model;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -6,26 +8,35 @@ import jakarta.validation.constraints.Size;
 //Нет компонента и связки. С компонентом все ломается.
 //Валидатор не работает.
 
+@Entity
+@Table(name = "users")
 public class User {
 
 
+    @Id
+    @GeneratedValue
     private int id;
 
     @NotEmpty(message = "name should be visible")
-    @Size (min=2, max = 12, message = "name should be valid")
+    @Size(min = 2, max = 12, message = "name should be valid")
+    @Column(name = "name", nullable = false, length = 18)
     private String name;
 
     @Min(value = 0, message = "cell# should be real")
     @NotEmpty(message = "name should be visible")
+    @Column(name = "cell")
     private String cell;
 
     @NotEmpty(message = "Country should be visible")
+    @Column(name = "country")
     private String country;
 
     @Min(value = 10, message = "no volunteers allowed here")
+    @Column(name = "salary")
     private int salary;
 
     @NotEmpty(message = "Country should be visible")
+    @Column(name = "dl")
     private String dl;
 
     public User() {
@@ -91,11 +102,13 @@ public class User {
 
     @Override
     public String toString() {
-        return  "id " + id + " | " +
+        return "id " + id + " | " +
                 "name - " + name + " | " +
                 "cell: " + cell + " | " +
                 "country of residence - " + country + " | " +
                 "salary - " + salary + " | " +
                 "driver's licence number is " + dl;
     }
+
+
 }

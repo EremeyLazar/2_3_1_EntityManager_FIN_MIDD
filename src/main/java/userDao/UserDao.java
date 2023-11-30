@@ -33,7 +33,7 @@ public class UserDao {
 
 
 
-    int ID_COUNT = 0;
+    int ID_COUNT = 10;
     User user1 = new User (++ID_COUNT, "Aleksander", "+79096496543", "Argentina", 80, "ADL-678-12");
     User user2 = new User (++ID_COUNT, "Artemr", "+74552878965", "Columbia", 85, "AMB-512-22");
     User user3 = new User (++ID_COUNT, "Zhanna", "+79095152334", "Brazil", 90, "DRR-558-01");
