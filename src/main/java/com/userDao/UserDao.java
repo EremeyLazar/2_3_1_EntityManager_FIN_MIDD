@@ -1,14 +1,20 @@
 package com.userDao;
 
 import com.model.User;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+//@Component
+//@Transactional
 public class UserDao {
 
     private static final String URL = "jdbc:mysql://localhost:3306/users";
@@ -39,30 +45,13 @@ public class UserDao {
 
     private List<User> userList = new ArrayList<>(Arrays.asList(user1, user2, user3));
 
+//    @PersistenceContext
+//    private EntityManager entityManager;
+
 
     public List<User> getAll() {
-//        return userList;
-        List <User> mySqlList = new ArrayList<>();
-        try {
-            Statement statement = connection.createStatement();
-            String SQL = "SELECT * FROM users";
-            ResultSet resultSet = statement.executeQuery(SQL);
-
-            while (resultSet.next()) {
-                User user = new User();
-                user.setId(resultSet.getLong("id"));
-                user.setName(resultSet.getString("name"));
-                user.setCell(resultSet.getString("cell"));
-                user.setCountry(resultSet.getString("country"));
-                user.setSalary(resultSet.getInt("salary"));
-                user.setDl(resultSet.getString("dl"));
-
-                mySqlList.add(user);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return mySqlList;
+//        return entityManager.createQuery("select u from User u", User.class).getResultList();
+        return null;
     }
 
     public User getSingleUser (int id) {

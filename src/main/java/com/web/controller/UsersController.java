@@ -22,44 +22,6 @@ public class UsersController {
     private User user;
 
 
-//    @Autowired
-//    private UserDao com.userDao;
-
-
-
-    //    @GetMapping(value = "/")
-//    public String showUsers(ModelMap com.model) {
-//        List<String> messages = new ArrayList<>();
-//        com.userDao.getUserFromList().stream().forEach(x -> messages.add(++i+") "+String.valueOf(x.getName())));
-//        com.model.addAttribute("users", messages);
-//        return "user";
-//    }
-    @GetMapping(value = "/")
-    public String showUsers(ModelMap model) {
-        model.addAttribute("users", userDao.getAll());
-        return "users";
-    }
-
-    // @RequestParam НЕ РАБОТАЛ!!!!
-//    @GetMapping(value = "/{id}")
-//    public String showUser(@PathVariable("id") int id, ModelMap com.model) {
-//        com.model.addAttribute("user", com.userDao.getSingleUser(id));
-//        return "showuser";
-//    }
-
-    @GetMapping(value = "/newuser")
-    public String newUser (Model model) {
-        model.addAttribute("newone", new User());
-        return "newuser";
-    }
-
-    @PostMapping(value = "/newuser")
-    public String createUser (@ModelAttribute("newone") @Valid User user, BindingResult br) {
-        if (br.hasErrors()) {return "/newuser";}
-        userDao.save(user);
-        return "redirect:/";
-    }
-
     @GetMapping(value = "/deleteuser")
     public String deleteUser (@RequestParam("id") int id) {
         user = userDao.getSingleUser(id);

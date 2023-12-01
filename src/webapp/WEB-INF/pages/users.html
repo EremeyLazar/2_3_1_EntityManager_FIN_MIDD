@@ -22,7 +22,7 @@
 <br/><br/>
 
 <!--LIST OF ALL USERS:-->
-<div th:each="user : ${users}">
+<div th:each="user : ${userlist}">
   <a th:text="${user.toString()}">userid</a>
 </div>
 <br/><br/>
@@ -31,12 +31,12 @@
 
 <!--CREATE A NEW USER:-->
 <input type="button" value="Add new user"
-onclick="window.location.href = 'newuser'"/>
+onclick="window.location.href = 'usercreation'"/>
 <br/><br/><br/>
 
 <!--DELETE A USER FORM:-->
 <p2>Enter user's ID to REMOVE user:</p2>
-<form action="deleteuser" method="get">
+<form action="deleteone" method="get">
   <input type="int" name="id"
          placeholder="Enter ID"/>
   <input type="submit"/>
