@@ -1,15 +1,15 @@
-package web.controller;
+package com.web.controller;
 
-import jakarta.validation.Valid;
+
 import org.springframework.validation.BindingResult;
-import userDao.UserDao;
-import model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.userDao.UserDao;
+import com.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,15 +23,15 @@ public class UsersController {
 
 
 //    @Autowired
-//    private UserDao userDao;
+//    private UserDao com.userDao;
 
 
 
     //    @GetMapping(value = "/")
-//    public String showUsers(ModelMap model) {
+//    public String showUsers(ModelMap com.model) {
 //        List<String> messages = new ArrayList<>();
-//        userDao.getUserFromList().stream().forEach(x -> messages.add(++i+") "+String.valueOf(x.getName())));
-//        model.addAttribute("users", messages);
+//        com.userDao.getUserFromList().stream().forEach(x -> messages.add(++i+") "+String.valueOf(x.getName())));
+//        com.model.addAttribute("users", messages);
 //        return "user";
 //    }
     @GetMapping(value = "/")
@@ -41,11 +41,11 @@ public class UsersController {
     }
 
     // @RequestParam НЕ РАБОТАЛ!!!!
-    @GetMapping(value = "/{id}")
-    public String showUser(@PathVariable("id") int id, ModelMap model) {
-        model.addAttribute("user", userDao.getSingleUser(id));
-        return "showuser";
-    }
+//    @GetMapping(value = "/{id}")
+//    public String showUser(@PathVariable("id") int id, ModelMap com.model) {
+//        com.model.addAttribute("user", com.userDao.getSingleUser(id));
+//        return "showuser";
+//    }
 
     @GetMapping(value = "/newuser")
     public String newUser (Model model) {

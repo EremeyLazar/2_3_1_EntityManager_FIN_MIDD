@@ -1,12 +1,13 @@
-package model;
+package com.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 
 //Нет компонента и связки. С компонентом все ломается.
 //Валидатор не работает.
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -14,8 +15,8 @@ public class User {
 
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotEmpty(message = "name should be visible")
     @Size(min = 2, max = 12, message = "name should be valid")
@@ -42,7 +43,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, String cell, String country, int salary, String dl) {
+    public User(Long id, String name, String cell, String country, int salary, String dl) {
         this.id = id;
         this.name = name;
         this.cell = cell;
@@ -52,11 +53,11 @@ public class User {
     }
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
