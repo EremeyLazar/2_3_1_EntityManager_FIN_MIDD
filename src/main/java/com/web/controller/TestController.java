@@ -1,12 +1,11 @@
 package com.web.controller;
 
-
-
 import com.model.User;
 import com.userDao.UserDao;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -28,22 +27,21 @@ public class TestController {
     @Autowired
     private EntityManager entityManager;
 
-//    @Autowired
+
+
+
     private UserDao userDao = new UserDao();
 
     Long tempId;
 
+    @GetMapping(value = "/test")
+    public String getTestTwo (User user) {
+
+        return "users";
+    }
+
     @GetMapping(value = "/")
     public String getTest (Model model) {
-
-//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//
-//        CriteriaQuery<User> query = criteriaBuilder.createQuery(User.class);
-//        Root<User> root = query.from(User.class);
-//        query.select(root)
-//                .where(criteriaBuilder.equal(root.get("name"), "Asha"));
-//        List<User> resultList = entityManager.createQuery(query).getResultList();
-
         List <User> resultList = entityManager.createQuery("select u from User u", User.class).getResultList();
         model.addAttribute("userlist", resultList );
 
@@ -76,7 +74,6 @@ public class TestController {
         //nested exception is javax.persistence.TransactionRequiredException:
         // No EntityManager with actual transaction available for current thread
         // - cannot reliably process 'persist' call
-
 
         return "redirect:/";
     }
