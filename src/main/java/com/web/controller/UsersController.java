@@ -18,7 +18,7 @@ public class UsersController {
 
     UserDao userDao = new UserDao();
 
-    int tempId;
+    Long tempId;
     private User user;
 
 
@@ -40,18 +40,20 @@ public class UsersController {
 //        return "deleted";
 //    }
 
-    @GetMapping(value = "/update")
-    public String updateUser (ModelMap model, @RequestParam("id") int id) {
-        tempId = id;
-        model.addAttribute("upuser", userDao.getSingleUser(id));
-        return "update";
-    }
-
-    @PatchMapping(value = "/update")
-    public String update (@ModelAttribute("upuser") @Valid User user, BindingResult br) {
-        if (br.hasErrors()) {return "/update";}
-        userDao.update(tempId, user);
-        return "redirect:/";
-    }
+//    @GetMapping(value = "/update")
+//    public String updateUser (ModelMap model, @RequestParam("id") Long id) {
+//        tempId = id;
+//        model.addAttribute("upuser", userDao.getSingleUser(id));
+//        return "update";
+//    }
+//
+//    @PatchMapping(value = "/update")
+//    public String update (@ModelAttribute("upuser") @Valid User user, BindingResult br) {
+//        if (br.hasErrors()) {return "/update";}
+//        userDao.update(tempId, user);
+//
+//
+//        return "redirect:/";
+//    }
 
 }

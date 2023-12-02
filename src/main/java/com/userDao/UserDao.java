@@ -54,7 +54,7 @@ public class UserDao {
         return null;
     }
 
-    public User getSingleUser (int id) {
+    public User getSingleUser (Long id) {
         return userList.stream().filter(user -> user.getId() == id).findAny().orElse(null);
     }
 
@@ -78,7 +78,7 @@ public class UserDao {
         userList.remove(user);
     }
 
-    public void update (int id, User userUpdated) {
+    public void update (Long id, User userUpdated) {
 //        int id = userUpdated.getId();
         User toBeUpdated = getSingleUser(id);
         toBeUpdated.setName(userUpdated.getName());
