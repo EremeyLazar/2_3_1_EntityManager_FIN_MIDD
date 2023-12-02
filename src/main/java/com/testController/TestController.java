@@ -20,7 +20,7 @@
 //    private EntityManager entityManager;
 //
 //    @GetMapping("/test")
-//    public String getTest (Model model) {
+//    public String getTest () {
 //
 //        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 //
@@ -30,8 +30,8 @@
 //                .where(criteriaBuilder.equal(root.get("name"), "Asha"));
 //        List<User> resultList = entityManager.createQuery(query).getResultList();
 //
-//        model.addAttribute("userlist", resultList );
-//        return "test";
+////        model.addAttribute("userlist", resultList );
+//        return resultList.toString();
 //    }
 //
 //

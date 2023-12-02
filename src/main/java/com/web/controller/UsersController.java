@@ -22,23 +22,23 @@ public class UsersController {
     private User user;
 
 
-    @GetMapping(value = "/deleteuser")
-    public String deleteUser (@RequestParam("id") int id) {
-        user = userDao.getSingleUser(id);
-        userDao.deleteUser(user);
-
-        return "redirect:deleted";
-    }
-
-    @GetMapping(value = "/deleted")
-    public String deleted (ModelMap model) {
-
-        List<String> messages = new ArrayList<>();
-        messages.add("User " + user.getName() + " has been removed!!!");
-        model.addAttribute("messages", messages);
-
-        return "deleted";
-    }
+//    @GetMapping(value = "/deleteuser")
+//    public String deleteUser (@RequestParam("id") int id) {
+//        user = userDao.getSingleUser(id);
+//        userDao.deleteUser(user);
+//
+//        return "redirect:deleted";
+//    }
+//
+//    @GetMapping(value = "/deleted")
+//    public String deleted (ModelMap model) {
+//
+//        List<String> messages = new ArrayList<>();
+//        messages.add("User " + user.getName() + " has been removed!!!");
+//        model.addAttribute("messages", messages);
+//
+//        return "deleted";
+//    }
 
     @GetMapping(value = "/update")
     public String updateUser (ModelMap model, @RequestParam("id") int id) {
