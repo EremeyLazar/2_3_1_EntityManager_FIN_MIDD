@@ -46,15 +46,15 @@ public class UserDao {
 
     //    UPDATE USER!!!
     @Transactional
-    public void update(User updatedUser) {
-        User needsUpdate = getOne(updatedUser.getId());
-
+    public void update(User updatedUser, Long id) {
+        User needsUpdate = getOne(id);
+        System.out.println(needsUpdate.toString());
         needsUpdate.setName(updatedUser.getName());
         needsUpdate.setCell(updatedUser.getCell());
         needsUpdate.setCountry(updatedUser.getCountry());
         needsUpdate.setSalary(updatedUser.getSalary());
         needsUpdate.setDl(updatedUser.getDl());
-
+        System.out.println(needsUpdate.toString());
         entityManager.persist(needsUpdate);
     }
 }

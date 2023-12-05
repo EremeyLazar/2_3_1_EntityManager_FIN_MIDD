@@ -14,6 +14,7 @@ import java.util.List;
 @org.springframework.stereotype.Controller
 public class Controller {
     User user;
+    Long tempId;
 
     @Autowired
     private UserDao userDao;
@@ -69,6 +70,7 @@ public class Controller {
 //    UPDATE USER!!!
     @GetMapping(value = "/update")
     public String updateUser(ModelMap model, @RequestParam("id") Long id) {
+        tempId = id;
         model.addAttribute("upuser", userDao.getOne(id));
         return "update";
     }
@@ -76,7 +78,7 @@ public class Controller {
     @Transactional
     @PatchMapping(value = "/update")
     public String update(@ModelAttribute("upuser") User updatedUser) {
-        userDao.update(updatedUser);
+        userDao.update(updatedUser, tempId);
         return "redirect:/";
     }
 }
