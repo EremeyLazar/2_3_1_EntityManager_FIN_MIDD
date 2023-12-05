@@ -4,12 +4,8 @@ import com.model.User;
 import com.service.EntityManagerService;
 import com.web.config.HibernateUtil;
 import org.hibernate.Session;
-import org.springframework.stereotype.Service;
 import org.hibernate.Transaction;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import org.springframework.stereotype.Service;
 
 @Service
 public class EntityManagerServiceImpl implements EntityManagerService {

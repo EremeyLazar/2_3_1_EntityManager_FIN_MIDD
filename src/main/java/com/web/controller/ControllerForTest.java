@@ -1,7 +1,6 @@
 package com.web.controller;
 
 import com.model.User;
-import com.model.dto.UserDto;
 import com.service.EntityManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
