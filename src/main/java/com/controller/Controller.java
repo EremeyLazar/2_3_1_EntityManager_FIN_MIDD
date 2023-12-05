@@ -42,7 +42,7 @@ public class Controller {
     }
 
     @Transactional
-    @PostMapping(value = "/usercreation")
+    @PatchMapping(value = "/usercreation")
     public String createUser(@ModelAttribute("newuser") User user) {
         userDao.createUser(user);
         return "redirect:/";
@@ -73,7 +73,8 @@ public class Controller {
         return "update";
     }
 
-    @PostMapping(value = "/update")
+    @Transactional
+    @PatchMapping(value = "/update")
     public String update(@ModelAttribute("upuser") User updatedUser) {
         userDao.update(updatedUser);
         return "redirect:/";

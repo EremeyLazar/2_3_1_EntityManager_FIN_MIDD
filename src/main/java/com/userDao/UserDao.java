@@ -41,9 +41,6 @@ public class UserDao {
     public void deleteUser(long id) {
         User user = entityManager.find(User.class, id);
         entityManager.remove(user);
-
-//    Request processing failed; nested exception is javax.persistence.
-//    TransactionRequiredException: Executing an update/delete query
     }
 
 
@@ -58,5 +55,6 @@ public class UserDao {
         needsUpdate.setSalary(updatedUser.getSalary());
         needsUpdate.setDl(updatedUser.getDl());
 
+        entityManager.persist(needsUpdate);
     }
 }
