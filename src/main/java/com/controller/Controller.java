@@ -43,7 +43,7 @@ public class Controller {
     }
 
     @Transactional
-    @PatchMapping(value = "/usercreation")
+    @PostMapping(value = "/usercreation")
     public String createUser(@ModelAttribute("newuser") User user) {
         userDao.createUser(user);
         return "redirect:/";
