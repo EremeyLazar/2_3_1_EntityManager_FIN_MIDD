@@ -58,8 +58,5 @@ public class UserDao {
         needsUpdate.setSalary(updatedUser.getSalary());
         needsUpdate.setDl(updatedUser.getDl());
 
-//        org.springframework.web.util.NestedServletException:
-//        Request processing failed; nested exception is javax.persistence
-//        .NoResultException: No entity found for query
     }
 }

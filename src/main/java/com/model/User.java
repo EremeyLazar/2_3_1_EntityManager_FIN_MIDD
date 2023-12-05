@@ -1,9 +1,5 @@
 package com.model;
 
-
-//Нет компонента и связки. С компонентом все ломается.
-//Валидатор не работает.
-
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
