@@ -24,12 +24,15 @@ public class TestController {
     @Autowired
     private EntityManager entityManager;
 
+//    UserDao userDao = new UserDao();
+
 
 
     @GetMapping(value = "/")
     public String getTest (Model model) {
 
         List <User> resultList = entityManager.createQuery("select u from User u", User.class).getResultList();
+//        List <User> resultList = userDao.getAll();
         model.addAttribute("userlist", resultList );
 
         return "users";
