@@ -14,7 +14,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
@@ -29,7 +28,7 @@ public class Config {
     private Environment env;
 
     @Bean
-    public DataSource dataSource () {
+    public DataSource dataSource() {
         BasicDataSource ds = new BasicDataSource();
         ds.setUrl(env.getRequiredProperty("db.url"));
         ds.setDriverClassName(env.getRequiredProperty("db.driver"));

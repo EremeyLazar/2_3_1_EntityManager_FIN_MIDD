@@ -1,12 +1,6 @@
 package com.web;
 
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -38,13 +32,12 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     }
 
     @Override
-    public void onStartup (ServletContext aServletContext) throws ServletException {
+    public void onStartup(ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);
         registerHiddenFieldFilter(aServletContext);
     }
 
-    private void registerHiddenFieldFilter (ServletContext aContext) {
+    private void registerHiddenFieldFilter(ServletContext aContext) {
         aContext.addFilter("hiddenHttpMethodFilter", new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null, true, "/*");
     }
-
 }
