@@ -1,47 +1,34 @@
 package com.web.controller;
 
 import com.model.User;
-import com.userDao.UserDao;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class TestController {
+
+    Long tempId;
+
     @Autowired
     private EntityManager entityManager;
 
 
 
-
-    private UserDao userDao = new UserDao();
-
-    Long tempId;
-
-    @GetMapping(value = "/test")
-    public String getTestTwo (User user) {
-
-        return "users";
-    }
-
     @GetMapping(value = "/")
     public String getTest (Model model) {
+
         List <User> resultList = entityManager.createQuery("select u from User u", User.class).getResultList();
         model.addAttribute("userlist", resultList );
 
@@ -69,6 +56,7 @@ public class TestController {
 
     @PostMapping(value = "/usercreation")
     public String createUser (@ModelAttribute("newuser") User user) {
+
         entityManager.persist(user);
 
         //nested exception is javax.persistence.TransactionRequiredException:
@@ -117,15 +105,19 @@ public class TestController {
     }
 
     @PatchMapping(value = "/update")
-    public String update (@ModelAttribute("upuser") @Valid User user, BindingResult br) {
-        if (br.hasErrors()) {return "/update";}
+    public String update (@ModelAttribute("upuser") User updatedUser) {
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
 
-        User needsUpdate = userDao.getSingleUser(tempId);
-        needsUpdate.setName(user.getName());
-        needsUpdate.setCell(user.getCell());
-        needsUpdate.setCountry(user.getCountry());
-        needsUpdate.setSalary(user.getSalary());
-        needsUpdate.setDl(user.getDl());
+        User needsUpdate = getOne(tempId);
+
+        needsUpdate.setName(updatedUser.getName());
+        needsUpdate.setCell(updatedUser.getCell());
+        needsUpdate.setCountry(updatedUser.getCountry());
+        needsUpdate.setSalary(updatedUser.getSalary());
+        needsUpdate.setDl(updatedUser.getDl());
+
+        entityTransaction.commit();
 
 
         return "redirect:/";
