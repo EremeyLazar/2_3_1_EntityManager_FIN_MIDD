@@ -1,31 +1,65 @@
-//package com.userDao;
-//
-//import com.model.User;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.stereotype.Component;
-//import org.springframework.transaction.annotation.Transactional;
-//import org.springframework.ui.Model;
-//
-//import javax.persistence.EntityManager;
-//import javax.persistence.PersistenceContext;
-//import java.sql.*;
-//import java.util.ArrayList;
-//import java.util.Arrays;
-//import java.util.List;
-//import java.util.stream.Collectors;
-//
-//@Component
-////@Transactional(readOnly = true)
-//public class UserDao {
-//
-//    @Autowired
-//    private EntityManager entityManager;
-//
-//    public List<User> getAll () {
-//
-//        List <User> resultList = entityManager.createQuery("select u from User u", User.class).getResultList();
-//
-//        return resultList;
-//    }
-//}
+package com.userDao;
+
+import com.model.User;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.List;
+
+@Repository
+public class UserDao {
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public List<User> getAll() {
+        List<User> resultList = entityManager.createQuery("select u from User u", User.class).getResultList();
+        return resultList;
+    }
+
+    public User getOne(Long id) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> query = criteriaBuilder.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+        query.select(root)
+                .where(criteriaBuilder.equal(root.get("id"), id));
+        User user = entityManager.createQuery(query).getSingleResult();
+        return user;
+    }
+
+    @Transactional
+    public void createUser(User user) {
+        entityManager.persist(user);
+    }
+
+    @Transactional
+    public void deleteUser(long id) {
+        User user = entityManager.find(User.class, id);
+        entityManager.remove(user);
+
+//    Request processing failed; nested exception is javax.persistence.
+//    TransactionRequiredException: Executing an update/delete query
+    }
+
+
+    //    UPDATE USER!!!
+    @Transactional
+    public void update(User updatedUser) {
+        User needsUpdate = getOne(updatedUser.getId());
+
+        needsUpdate.setName(updatedUser.getName());
+        needsUpdate.setCell(updatedUser.getCell());
+        needsUpdate.setCountry(updatedUser.getCountry());
+        needsUpdate.setSalary(updatedUser.getSalary());
+        needsUpdate.setDl(updatedUser.getDl());
+
+//        org.springframework.web.util.NestedServletException:
+//        Request processing failed; nested exception is javax.persistence
+//        .NoResultException: No entity found for query
+    }
+}

@@ -1,4 +1,4 @@
-package com.web.config;
+package com.web;
 
 
 import org.apache.commons.dbcp2.BasicDataSource;
