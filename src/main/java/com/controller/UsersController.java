@@ -1,10 +1,7 @@
 package com.controller;
 
-//Servive + interfaces
-//User in DAO
-
-
 import com.model.User;
+import com.service.UserService;
 import com.service.UserServiceImp;
 import com.userDao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +19,11 @@ import java.util.List;
 public class UsersController {
 
     @Autowired
-    private UserServiceImp userServiceImp;
+    private UserService userService;
 
     @GetMapping(value = "/")
     public String getAll(Model model) {
-        List<User> resultList = userServiceImp.getAll();
+        List<User> resultList = userService.getAll();
         model.addAttribute("userlist", resultList);
 
         return "users";
@@ -41,7 +38,7 @@ public class UsersController {
 
     @PostMapping(value = "/usercreation")
     public String createUser(@ModelAttribute("newuser") User user) {
-        userServiceImp.createUser(user);
+        userService.createUser(user);
         return "redirect:/";
     }
 
@@ -49,8 +46,8 @@ public class UsersController {
     //    DELETE USER!!!
     @GetMapping(value = "/deleteuser")
     public String deleteUser(@RequestParam("id") long id) {
-        User user = userServiceImp.getOne(id);
-        userServiceImp.deleteUser(id);
+        User user = userService.getOne(id);
+        userService.deleteUser(id);
         return "redirect:deleted";
     }
 
@@ -65,13 +62,13 @@ public class UsersController {
     //    UPDATE USER!!!
     @GetMapping(value = "/update")
     public String updateUser(ModelMap model, @RequestParam("id") Long id) {
-        model.addAttribute("upuser", userServiceImp.getOne(id));
+        model.addAttribute("upuser", userService.getOne(id));
         return "update";
     }
 
     @PostMapping(value = "/update")
     public String update(@ModelAttribute("upuser") User updatedUser) {
-        userServiceImp.update(updatedUser, updatedUser.getId());
+        userService.update(updatedUser, updatedUser.getId());
         return "redirect:/";
     }
 }
