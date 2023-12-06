@@ -2,8 +2,6 @@ package com.controller;
 
 import com.model.User;
 import com.service.UserService;
-import com.service.UserServiceImp;
-import com.userDao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;

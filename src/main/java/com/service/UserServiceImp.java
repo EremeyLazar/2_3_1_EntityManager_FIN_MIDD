@@ -34,7 +34,6 @@ public class UserServiceImp implements UserService {
         userDao.deleteUser(id);
     }
 
-    //    UPDATE USER!!!
     @Transactional
     public void update(User updatedUser, Long id) {
         userDao.update(updatedUser, id);
