@@ -20,7 +20,6 @@ import java.util.List;
 
 @org.springframework.stereotype.Controller
 public class UsersController {
-    User user;
 
     @Autowired
     private UserDao userDao;
@@ -59,7 +58,7 @@ public class UsersController {
     //    DELETE USER!!!
     @GetMapping(value = "/deleteuser")
     public String deleteUser(@RequestParam("id") long id) {
-        user = userDao.getOne(id);
+        User user = userDao.getOne(id);
         userDao.deleteUser(id);
         return "redirect:deleted";
     }
@@ -67,7 +66,7 @@ public class UsersController {
     @GetMapping(value = "/deleted")
     public String deleted(ModelMap model) {
         List<String> messages = new ArrayList<>();
-        messages.add("User " + user.getName() + " has been removed!!!");
+        messages.add("Requested user has been removed!!!");
         model.addAttribute("messages", messages);
         return "deleted";
     }
