@@ -1,20 +1,26 @@
 package com.controller;
 
+//Servive + interfaces
+//UserController
+//User in DAO
+
+
 import com.model.User;
 import com.userDao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Controller
-public class Controller {
+public class UsersController {
     User user;
-    Long tempId;
 
     @Autowired
     private UserDao userDao;
@@ -42,7 +48,7 @@ public class Controller {
         return "usercreation";
     }
 
-    @Transactional
+//    @Transactional
     @PostMapping(value = "/usercreation")
     public String createUser(@ModelAttribute("newuser") User user) {
         userDao.createUser(user);
@@ -70,15 +76,13 @@ public class Controller {
     //    UPDATE USER!!!
     @GetMapping(value = "/update")
     public String updateUser(ModelMap model, @RequestParam("id") Long id) {
-        tempId = id;
         model.addAttribute("upuser", userDao.getOne(id));
         return "update";
     }
 
-    @Transactional
-    @PatchMapping(value = "/update")
+    @PostMapping(value = "/update")
     public String update(@ModelAttribute("upuser") User updatedUser) {
-        userDao.update(updatedUser, tempId);
+        userDao.update(updatedUser, updatedUser.getId());
         return "redirect:/";
     }
 }

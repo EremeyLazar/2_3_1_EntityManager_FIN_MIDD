@@ -26,7 +26,10 @@
 
 <!--UPDATING USER FORM-->
 
-<form th:method="PATCH" th:action="@{/update}" th:object="${upuser}">
+<form th:method="POST" th:action="@{/update}" th:object="${upuser}">
+  <label for="id">Enter name</label>
+  <input type="number" th:field="*{id}" id="id"readonly/>
+  <br/><br/>
   <label for="name">Enter name</label>
   <input type="text" th:field="*{name}" id="name"/>
   <br/><br/>
