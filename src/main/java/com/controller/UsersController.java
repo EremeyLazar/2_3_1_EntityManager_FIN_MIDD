@@ -1,11 +1,11 @@
 package com.controller;
 
 //Servive + interfaces
-//UserController
 //User in DAO
 
 
 import com.model.User;
+import com.service.UserServiceImp;
 import com.userDao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -22,24 +22,24 @@ import java.util.List;
 public class UsersController {
 
     @Autowired
-    private UserDao userDao;
+    private UserServiceImp userServiceImp;
 
     @GetMapping(value = "/")
     public String getAll(Model model) {
-        List<User> resultList = userDao.getAll();
+        List<User> resultList = userServiceImp.getAll();
         model.addAttribute("userlist", resultList);
 
         return "users";
     }
-
-    @GetMapping(value = "/showuser")
-    public String getOne(Model model, Long id) {
-        User user = userDao.getOne(14L);
-        model.addAttribute(user);
-        return "showuser";
-    }
-
-
+//
+//    @GetMapping(value = "/showuser")
+//    public String getOne(Model model, Long id) {
+//        User user = userDao.getOne(14L);
+//        model.addAttribute(user);
+//        return "showuser";
+//    }
+//
+//
     //NEW USER!!!
     @GetMapping(value = "/usercreation")
     public String newUser(Model model) {
@@ -47,41 +47,40 @@ public class UsersController {
         return "usercreation";
     }
 
-//    @Transactional
     @PostMapping(value = "/usercreation")
     public String createUser(@ModelAttribute("newuser") User user) {
-        userDao.createUser(user);
+        userServiceImp.createUser(user);
         return "redirect:/";
     }
-
-
-    //    DELETE USER!!!
-    @GetMapping(value = "/deleteuser")
-    public String deleteUser(@RequestParam("id") long id) {
-        User user = userDao.getOne(id);
-        userDao.deleteUser(id);
-        return "redirect:deleted";
-    }
-
-    @GetMapping(value = "/deleted")
-    public String deleted(ModelMap model) {
-        List<String> messages = new ArrayList<>();
-        messages.add("Requested user has been removed!!!");
-        model.addAttribute("messages", messages);
-        return "deleted";
-    }
-
-
-    //    UPDATE USER!!!
-    @GetMapping(value = "/update")
-    public String updateUser(ModelMap model, @RequestParam("id") Long id) {
-        model.addAttribute("upuser", userDao.getOne(id));
-        return "update";
-    }
-
-    @PostMapping(value = "/update")
-    public String update(@ModelAttribute("upuser") User updatedUser) {
-        userDao.update(updatedUser, updatedUser.getId());
-        return "redirect:/";
-    }
+//
+//
+//    //    DELETE USER!!!
+//    @GetMapping(value = "/deleteuser")
+//    public String deleteUser(@RequestParam("id") long id) {
+//        User user = userDao.getOne(id);
+//        userDao.deleteUser(id);
+//        return "redirect:deleted";
+//    }
+//
+//    @GetMapping(value = "/deleted")
+//    public String deleted(ModelMap model) {
+//        List<String> messages = new ArrayList<>();
+//        messages.add("Requested user has been removed!!!");
+//        model.addAttribute("messages", messages);
+//        return "deleted";
+//    }
+//
+//
+//    //    UPDATE USER!!!
+//    @GetMapping(value = "/update")
+//    public String updateUser(ModelMap model, @RequestParam("id") Long id) {
+//        model.addAttribute("upuser", userDao.getOne(id));
+//        return "update";
+//    }
+//
+//    @PostMapping(value = "/update")
+//    public String update(@ModelAttribute("upuser") User updatedUser) {
+//        userDao.update(updatedUser, updatedUser.getId());
+//        return "redirect:/";
+//    }
 }
