@@ -31,15 +31,7 @@ public class UsersController {
 
         return "users";
     }
-//
-//    @GetMapping(value = "/showuser")
-//    public String getOne(Model model, Long id) {
-//        User user = userDao.getOne(14L);
-//        model.addAttribute(user);
-//        return "showuser";
-//    }
-//
-//
+
     //NEW USER!!!
     @GetMapping(value = "/usercreation")
     public String newUser(Model model) {
@@ -69,18 +61,17 @@ public class UsersController {
         model.addAttribute("messages", messages);
         return "deleted";
     }
-//
-//
-//    //    UPDATE USER!!!
-//    @GetMapping(value = "/update")
-//    public String updateUser(ModelMap model, @RequestParam("id") Long id) {
-//        model.addAttribute("upuser", userDao.getOne(id));
-//        return "update";
-//    }
-//
-//    @PostMapping(value = "/update")
-//    public String update(@ModelAttribute("upuser") User updatedUser) {
-//        userDao.update(updatedUser, updatedUser.getId());
-//        return "redirect:/";
-//    }
+
+    //    UPDATE USER!!!
+    @GetMapping(value = "/update")
+    public String updateUser(ModelMap model, @RequestParam("id") Long id) {
+        model.addAttribute("upuser", userServiceImp.getOne(id));
+        return "update";
+    }
+
+    @PostMapping(value = "/update")
+    public String update(@ModelAttribute("upuser") User updatedUser) {
+        userServiceImp.update(updatedUser, updatedUser.getId());
+        return "redirect:/";
+    }
 }

@@ -15,8 +15,7 @@ public class User {
     private Long id;
 
     @NotEmpty(message = "name should be visible")
-    @Size(min = 2, max = 12, message = "name should be valid")
-    @Column(name = "name", nullable = false, length = 18)
+    @Column(name = "name", nullable = false, length = 21)
     private String name;
 
     @Min(value = 0, message = "cell# should be real")
@@ -28,7 +27,7 @@ public class User {
     @Column(name = "country")
     private String country;
 
-    @Min(value = 10, message = "no volunteers allowed here")
+    @Min(value = 1, message = "no volunteers allowed here")
     @Column(name = "salary")
     private int salary;
 

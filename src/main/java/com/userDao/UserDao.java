@@ -41,16 +41,15 @@ public class UserDao {
         User user = entityManager.find(User.class, id);
         entityManager.remove(user);
     }
-//
-//
-//    //    UPDATE USER!!!
-//    public void update(User updatedUser, Long id) {
-//        User needsUpdate = getOne(id);
-//        needsUpdate.setName(updatedUser.getName());
-//        needsUpdate.setCell(updatedUser.getCell());
-//        needsUpdate.setCountry(updatedUser.getCountry());
-//        needsUpdate.setSalary(updatedUser.getSalary());
-//        needsUpdate.setDl(updatedUser.getDl());
-//        entityManager.persist(needsUpdate);
-//    }
+
+    //    UPDATE USER!!!
+    public void update(User updatedUser, Long id) {
+        User needsUpdate = getOne(id);
+        needsUpdate.setName(updatedUser.getName());
+        needsUpdate.setCell(updatedUser.getCell());
+        needsUpdate.setCountry(updatedUser.getCountry());
+        needsUpdate.setSalary(updatedUser.getSalary());
+        needsUpdate.setDl(updatedUser.getDl());
+        entityManager.persist(needsUpdate);
+    }
 }
