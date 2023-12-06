@@ -24,21 +24,21 @@ public class UserServiceImp {
         List<User> resultList = userDao.getAll();
         return resultList;
     }
-//
-//    public User getOne(Long id) {
-//        User user = userDao.getOne(id);
-//        return user;
-//    }
-//
+
+    public User getOne(Long id) {
+        User user = userDao.getOne(id);
+        return user;
+    }
+
     @Transactional
     public void createUser(User user) {
         userDao.createUser(user);
     }
-//
-//    @Transactional
-//    public void deleteUser(long id) {
-//        userDao.deleteUser(id);
-//    }
+
+    @Transactional
+    public void deleteUser(long id) {
+        userDao.deleteUser(id);
+    }
 //
 //
 //    //    UPDATE USER!!!

@@ -52,23 +52,23 @@ public class UsersController {
         userServiceImp.createUser(user);
         return "redirect:/";
     }
-//
-//
-//    //    DELETE USER!!!
-//    @GetMapping(value = "/deleteuser")
-//    public String deleteUser(@RequestParam("id") long id) {
-//        User user = userDao.getOne(id);
-//        userDao.deleteUser(id);
-//        return "redirect:deleted";
-//    }
-//
-//    @GetMapping(value = "/deleted")
-//    public String deleted(ModelMap model) {
-//        List<String> messages = new ArrayList<>();
-//        messages.add("Requested user has been removed!!!");
-//        model.addAttribute("messages", messages);
-//        return "deleted";
-//    }
+
+
+    //    DELETE USER!!!
+    @GetMapping(value = "/deleteuser")
+    public String deleteUser(@RequestParam("id") long id) {
+        User user = userServiceImp.getOne(id);
+        userServiceImp.deleteUser(id);
+        return "redirect:deleted";
+    }
+
+    @GetMapping(value = "/deleted")
+    public String deleted(ModelMap model) {
+        List<String> messages = new ArrayList<>();
+        messages.add("Requested user has been removed!!!");
+        model.addAttribute("messages", messages);
+        return "deleted";
+    }
 //
 //
 //    //    UPDATE USER!!!

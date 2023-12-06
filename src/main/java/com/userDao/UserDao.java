@@ -21,27 +21,26 @@ public class UserDao {
         List<User> resultList = entityManager.createQuery("select u from User u", User.class).getResultList();
         return resultList;
     }
-//
-//    public User getOne(Long id) {
-//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//        CriteriaQuery<User> query = criteriaBuilder.createQuery(User.class);
-//        Root<User> root = query.from(User.class);
-//        query.select(root)
-//                .where(criteriaBuilder.equal(root.get("id"), id));
-//        User user = entityManager.createQuery(query).getSingleResult();
-//        return user;
-//    }
-//
-//
+
+    public User getOne(Long id) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<User> query = criteriaBuilder.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+        query.select(root)
+                .where(criteriaBuilder.equal(root.get("id"), id));
+        User user = entityManager.createQuery(query).getSingleResult();
+        return user;
+    }
+
+
     public void createUser(User user) {
         entityManager.persist(user);
     }
-//
-//
-//    public void deleteUser(long id) {
-//        User user = entityManager.find(User.class, id);
-//        entityManager.remove(user);
-//    }
+
+    public void deleteUser(long id) {
+        User user = entityManager.find(User.class, id);
+        entityManager.remove(user);
+    }
 //
 //
 //    //    UPDATE USER!!!
