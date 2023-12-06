@@ -62,6 +62,4 @@ public class Config {
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
     }
-
-
 }
