@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
+@Transactional(readOnly = true)
 public class UserServiceImp implements UserService {
 
     @Autowired
