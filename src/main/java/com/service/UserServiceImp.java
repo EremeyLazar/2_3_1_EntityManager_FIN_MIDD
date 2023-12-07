@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-@Transactional(readOnly = true)
 public class UserServiceImp implements UserService {
 
     @Autowired
@@ -25,17 +24,17 @@ public class UserServiceImp implements UserService {
         return user;
     }
 
-    @Transactional
+
     public void createUser(User user) {
         userDao.createUser(user);
     }
 
-    @Transactional
+
     public void deleteUser(long id) {
         userDao.deleteUser(id);
     }
 
-    @Transactional
+
     public void update(User updatedUser, Long id) {
         userDao.update(updatedUser, id);
     }
