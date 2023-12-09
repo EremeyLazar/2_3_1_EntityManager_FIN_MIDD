@@ -8,13 +8,14 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public interface UserService {
-    public List<User> getAll();
+    List<User> getAll();
 
-    public User getOne(int id);
-    @Transactional
-    public void createUser(User user);
-    @Transactional
-    public void deleteUser(int id);
-    @Transactional
-    public void update(User updatedUser, int id);
+    void createUser(User user);
+
+    void deleteUser(long id);
+
+    void update(User updatedUser, long id);
+
+    User getOne (long id);
 }
+
