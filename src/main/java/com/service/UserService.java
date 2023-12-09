@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 public interface UserService {
@@ -16,6 +17,6 @@ public interface UserService {
 
     void update(User updatedUser, long id);
 
-    User getOne (long id);
+    User getOne(long id);
 }
 
