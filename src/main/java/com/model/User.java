@@ -5,20 +5,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-//UserDao:
-// методы интерфейса по-умолчанию public, явно прописывать не нужно (update);
-//
-//UserServiceImp:
-// для сервисного слоя используй другую аннотацию для получения бина;
-//
-//UserService:
-//@Transactional, @Service прописывай не в интерфейсе, а в классе сервиса;
-//
-//  UserDaoImp:
-//  в методе update вызываешь 2 метода этого же класса ДАО, методы ДАО не должны вызываться из
-//  других методов ДАО, логику метода вынеси в слой сервиса;
-
-
 @Entity
 @Table(name = "users")
 public class User {
